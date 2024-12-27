@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <nav>
+            <a th:href="@{/Filme}">Início</a>
+            <a th:href="@{/Filme/Cadastro}">Cadastrar Filme</a>
+        </nav>
+        
+        <h1>Lista de filmes</h1>
+        
+        <span th:text="${listaFilmes}"></span>
+    </body>
+</html>
