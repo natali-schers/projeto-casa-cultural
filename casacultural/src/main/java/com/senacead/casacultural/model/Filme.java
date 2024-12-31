@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data // Anotação que pertence ao Lombok que gera os métodos get/set e construtores
 public class Filme {
-    public int Id;
+    public Integer Id;
     
     public String Titulo;
     
