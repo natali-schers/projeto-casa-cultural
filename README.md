@@ -1,5 +1,5 @@
 # Casa Cultural 🎬
-Casa Cultural é um sistema web desenvolvido em Spring MVC como parte de uma atividade acadêmica. O objetivo é criar um espaço colaborativo onde os usuários possam cadastrar filmes assistidos, analisar esses filmes e compartilhar suas opiniões.
+Casa Cultural é um sistema web desenvolvido em Java como parte de uma atividade acadêmica. O objetivo é criar um espaço colaborativo onde os usuários possam cadastrar filmes assistidos, analisar esses filmes e compartilhar suas opiniões.
 
 ## 📋 Funcionalidades
 Cadastrar filmes assistidos, incluindo:
