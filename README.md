@@ -11,7 +11,9 @@ Cadastrar filmes assistidos, incluindo:
 Realizar análises dos filmes cadastrados, com:
 - Notas
 - Comentários
-- Visualizar detalhes de cada filme e suas respectivas análises.
+
+Visualizar detalhes de cada filme e suas respectivas análises.
+
 ## ⚙️ Tecnologias Utilizadas
 Backend:
 - Java 17
