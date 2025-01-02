@@ -52,19 +52,21 @@ public class FilmeController {
                 .findFirst()
                 .orElse(null);
 
-        List<Analise> analisesFilmeSelecionado = analises.stream()
-                .filter(analise -> analise.IdFilme == filmeSelecionado.Id).toList();
-        
         if (filmeSelecionado == null) {
             return "redirect:/";
         }
 
+        List<Analise> analisesFilmeSelecionado = analises.stream()
+                .filter(analise -> analise.getFilme() != null && analise.getFilme().getId() == id)
+                .toList();
+
         Analise analise = new Analise();
-        analise.setIdFilme(filmeSelecionado.Id);
-        
+        analise.setFilme(filmeSelecionado);
+
         model.addAttribute("analise", analise);
         model.addAttribute("listaAnalises", analisesFilmeSelecionado);
         model.addAttribute("filme", filmeSelecionado);
+
         return "/Filme/Filme";
     }
 }

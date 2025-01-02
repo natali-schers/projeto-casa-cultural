@@ -11,7 +11,6 @@
 
         <main class="container mt-5">
             <div class="row">
-                <!-- Detalhes do Filme -->
                 <div class="col-md-8">
                     <h1 th:text="${filme.Titulo}">Título do Filme</h1>
                     <p><strong>Sinopse:</strong> <span th:text="${filme.Sinopse}"></span></p>
@@ -19,28 +18,26 @@
                     <p><strong>Ano de Lançamento:</strong> <span th:text="${filme.AnoLancamento}"></span></p>
                 </div>
 
-                <!-- Formulário de Análise -->
                 <div class="col-md-4">
                     <h3 class="mb-4">Cadastrar Análise</h3>
                     <form th:action="@{/CadastrarAnalise}" method="POST" th:object="${analise}">
                         <div class="mb-3 d-none">
                             <label for="idFilme" class="form-label">ID do filme</label>
-                            <input type="number" th:field="${analise.IdFilme}" id="idFilme" class="form-control" readonly>
+                            <input type="number" th:field="${analise.filme.Id}" id="idFilme" class="form-control" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="analise" class="form-label">Análise</label>
-                            <input type="text" th:field="${analise.Analise}" id="analise" class="form-control" placeholder="Digite sua análise">
+                            <input type="text" th:field="${analise.analise}" id="analise" class="form-control" placeholder="Digite sua análise">
                         </div>
                         <div class="mb-3">
                             <label for="nota" class="form-label">Nota</label>
-                            <input type="number" th:field="${analise.Nota}" id="nota" class="form-control" placeholder="De 0 a 10" min="0" max="10">
+                            <input type="number" th:field="${analise.nota}" id="nota" class="form-control" placeholder="De 0 a 10" min="0" max="10">
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Cadastrar Análise</button>
                     </form>
 
                     <h3 class="mb-4 mt-5">Análises</h3>
                     <div class="row">
-                        <!-- Iterar sobre as análises -->
                         <div class="col-md-12 mb-3" th:each="analise : ${listaAnalises}">
                             <div class="card shadow-sm">
                                 <div class="card-body">

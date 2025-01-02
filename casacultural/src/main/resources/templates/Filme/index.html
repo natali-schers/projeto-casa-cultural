@@ -28,13 +28,13 @@
                 </thead>
                 <tbody>
                     <tr th:each="filme : ${listaFilmes}">
-                        <td class="text-center" th:text="${filme.Id}"></td>
-                        <td class="text-center" th:text="${filme.Titulo}"></td>
-                        <td class="text-center" th:text="${filme.Sinopse}"></td>
-                        <td class="text-center" th:text="${filme.Genero}"></td>
-                        <td class="text-center" th:text="${filme.AnoLancamento}"></td>
+                        <td class="text-center" th:text="${filme.id}"></td>
+                        <td class="text-center" th:text="${filme.titulo}"></td>
+                        <td class="text-center" th:text="${filme.sinopse}"></td>
+                        <td class="text-center" th:text="${filme.genero}"></td>
+                        <td class="text-center" th:text="${filme.anoLancamento}"></td>
                         <td class="text-center">
-                            <a th:href="@{/DetalhesFilme/{id}(id=${filme.Id})}" class="btn btn-primary">Ver mais</a>
+                            <a th:href="@{/DetalhesFilme/{id}(id=${filme.id})}" class="btn btn-primary">Ver mais</a>
                         </td>
                     </tr>
                 </tbody>
