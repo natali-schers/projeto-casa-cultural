@@ -28,8 +28,10 @@ public class AnaliseService {
     public Analise AtualizarAnalise(Integer id, Analise analiseAtualizada) {
         Analise analise = GetAnaliseById(id);
 
+        analise.setId(analise.getId());
         analise.setAnalise(analiseAtualizada.analise);
         analise.setNota(analiseAtualizada.nota);
+        analise.setFilme(analise.getFilme());
 
         analiseRepository.save(analise);
 

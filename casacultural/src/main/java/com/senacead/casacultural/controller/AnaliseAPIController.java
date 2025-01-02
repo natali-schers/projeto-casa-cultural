@@ -35,7 +35,7 @@ public class AnaliseAPIController {
         return new ResponseEntity<>(analises, HttpStatus.OK);
     }
     
-    @PutMapping("/atualizar/{filmeId}")
+    @PutMapping("/atualizar/{id}")
     public ResponseEntity<Analise> AtualizarAnalise(@PathVariable Integer id, @RequestBody Analise analiseAtualizada) {
         Analise analise = analiseService.GetAnaliseById(id);
         
