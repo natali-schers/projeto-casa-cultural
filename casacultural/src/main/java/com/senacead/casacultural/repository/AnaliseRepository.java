@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AnaliseRepository extends JpaRepository<Analise, Integer> {
-    List<Analise> findByFilmeId(Integer Id);
+    List<Analise> findByFilmeId(Integer id);
+    
+    void deleteByFilmeId(Integer id);
 }

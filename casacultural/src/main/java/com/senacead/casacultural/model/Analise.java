@@ -24,7 +24,7 @@ public class Analise {
     @JoinColumn(name = "FilmeId", referencedColumnName = "Id")
     public Filme filme;    
     
-    public String analise;
+    public String analiseFilme;
     
     public double nota;
 }

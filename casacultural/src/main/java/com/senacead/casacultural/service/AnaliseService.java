@@ -2,6 +2,8 @@ package com.senacead.casacultural.service;
 
 import com.senacead.casacultural.model.Analise;
 import com.senacead.casacultural.repository.AnaliseRepository;
+import jakarta.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,7 @@ public class AnaliseService {
     AnaliseRepository analiseRepository;
 
     public Analise Cadastrar(Analise analise) {
+        analise.setId(null);
         analiseRepository.save(analise);
         return analise;
     }
@@ -29,7 +32,7 @@ public class AnaliseService {
         Analise analise = GetAnaliseById(id);
 
         analise.setId(analise.getId());
-        analise.setAnalise(analiseAtualizada.analise);
+        analise.setAnaliseFilme(analiseAtualizada.analiseFilme);
         analise.setNota(analiseAtualizada.nota);
         analise.setFilme(analise.getFilme());
 
@@ -39,14 +42,25 @@ public class AnaliseService {
     }
 
     public void ExcluirAnaliseById(Integer id) {
-          Analise analise = GetAnaliseById(id);
-        
+        Analise analise = GetAnaliseById(id);
+
         if (analise != null) {
-           analiseRepository.deleteById(analise.id);
+            analiseRepository.deleteById(analise.id);
         }
     }
-    
+
+    @Transactional
+    public void ExcluirAnalisesByFilmeId(Integer FilmeId) {
+        List<Analise> analises = analiseRepository.findByFilmeId(FilmeId);
+
+        if (analises != null) {
+            analiseRepository.deleteByFilmeId(FilmeId);
+        }
+    }
+
     public List<Analise> GetAnalisesByFilmeId(Integer FilmeId) {
-        return analiseRepository.findByFilmeId(FilmeId);
+        List<Analise> analises = analiseRepository.findByFilmeId(FilmeId);
+        return analises != null ? analises : new ArrayList<>();
+
     }
 }
