@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+<nav class="navbar navbar-expand-lg mb-3">
     <div class="container">
         <a class="navbar-brand" th:href="@{/}">Casa Cultural</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,4 +15,15 @@
             </ul>
         </div>
     </div>
+    <form th:action="@{/Preferencia}" method="POST" class="actions px-3">
+        <p class="mb-0">
+            <select name="estilo" id="selEstilo" class="form-select"> 
+                <option value="claro" th:selected="${css}==claro">Tema Claro</option> 
+                <option value="escuro" th:selected="${css}==escuro">Tema Escuro</option> 
+            </select>
+        </p> 
+        <p class="mb-0">
+            <input type="submit" value="OK" class="btn btn-primary" />
+        </p> 
+    </form> 
 </nav>

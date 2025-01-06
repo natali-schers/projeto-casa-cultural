@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class FilmeController {
-
     @Autowired
     FilmeService filmeService;
 
@@ -23,14 +23,16 @@ public class FilmeController {
     AnaliseService analiseService;
 
     @GetMapping("/")
-    public String ListarFilmes(Model model) {
+    public String ListarFilmes(Model model, @CookieValue(name = "pref-estilo", defaultValue = "claro") String tema) {
         List<Filme> filmes = filmeService.GetFilmes();
+        model.addAttribute("css", tema);
         model.addAttribute("listaFilmes", filmes);
         return "/Filme/Index";
     }
 
     @GetMapping("/Filme/Cadastro")
-    public String CadastrarFilme(Model model) {
+    public String CadastrarFilme(Model model, @CookieValue(name = "pref-estilo", defaultValue = "claro") String tema) {
+        model.addAttribute("css", tema);
         model.addAttribute("filme", new Filme());
         return "/Filme/Cadastro";
     }
@@ -47,8 +49,9 @@ public class FilmeController {
     }
 
     @GetMapping("/DetalhesFilme/{id}")
-    public String DetalhesFilme(@PathVariable int id, Model model) {
+    public String DetalhesFilme(@PathVariable int id, Model model, @CookieValue(name = "pref-estilo", defaultValue = "claro") String tema) {
         Filme filmeSelecionado = filmeService.GetFilmeById(id);
+        model.addAttribute("css", tema);
 
         if (filmeSelecionado == null) {
             return "redirect:/";
@@ -75,13 +78,15 @@ public class FilmeController {
     }
 
     @GetMapping("/AlterarFilme/{id}")
-    public String AlterarFilme(Model model, @PathVariable Integer id) {
+    public String AlterarFilme(Model model, @PathVariable Integer id, @CookieValue(name = "pref-estilo", defaultValue = "claro") String tema) {
+        model.addAttribute("css", tema);
         model.addAttribute("filme", filmeService.GetFilmeById(id));
         return "/Filme/Cadastro";
     }
 
     @GetMapping("/{id}/CadastrarAnalise")
-    public String CadastrarAnalise(Model model, @PathVariable String id) {
+    public String CadastrarAnalise(Model model, @PathVariable String id, @CookieValue(name = "pref-estilo", defaultValue = "claro") String tema) {
+        model.addAttribute("css", tema);
         Analise analise = new Analise();
         analise.setFilme(filmeService.GetFilmeById(Integer.parseInt(id)));
         model.addAttribute("analise", analise);
@@ -104,7 +109,8 @@ public class FilmeController {
     }
 
     @GetMapping("/AlterarAnalise/{id}")
-    public String AlterarAnalise(Model model, @PathVariable Integer id) {
+    public String AlterarAnalise(Model model, @PathVariable Integer id, @CookieValue(name = "pref-estilo", defaultValue = "claro") String tema) {
+        model.addAttribute("css", tema);
         model.addAttribute("analise", analiseService.GetAnaliseById(id));
         return "/Filme/Analise";
     }
@@ -116,5 +122,4 @@ public class FilmeController {
 
         return "redirect:/DetalhesFilme/" + analise.filme.getId();
     }
-
 }

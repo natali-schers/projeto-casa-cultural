@@ -7,9 +7,42 @@
     .btn {
         display: inline-flex;
         padding: 8px;
+        font-size: 14px;
         
         span {
             font-size: 20px;
         }
+    }
+}
+
+#claro {
+    .navbar {
+        background-color: #C2C2C2;
+        
+        .nav-link, .navbar-brand {
+            color: #212529;
+        }
+    }
+}
+
+#escuro {
+    background-color: #212121;
+    
+    .navbar {
+        background-color: #171717;
+        
+        .nav-link, .navbar-brand {
+            color: #FFFFFF;
+        }
+    }
+    
+    .card {
+        --bs-card-bg: #171717;
+        color: #FFF;
+        border: 1px solid #FFF;
+    }
+    
+    h1, h3, th, td, p, label {
+        color: #FFFFFF;
     }
 }
